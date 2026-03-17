@@ -1,0 +1,36 @@
+---
+apiVersion: gateway.mulesoft.com/v1alpha1
+kind: Extension
+metadata:
+  labels:
+    title: OAuth Protected Resource Metadata
+    category: Security
+    description: >-
+      Serves RFC 9728 .well-known/oauth-protected-resource JSON with
+      configurable resource URL, authorization servers, and scopes
+    metadata/interfaceScope: api,resource
+spec:
+  extends:
+    - name: extension-definition
+      namespace: default
+  properties:
+    wellKnownPath:
+      type: string
+      default: "/.well-known/oauth-protected-resource"
+    resourceUrl:
+      type: string
+      format: uri
+      default: "https://api.example.com"
+    authorizationServers:
+      type: array
+      items:
+        type: string
+      default: ["https://auth.example.com"]
+    scopesSupported:
+      type: array
+      items:
+        type: string
+      default: []
+  required:
+    - resourceUrl
+    - authorizationServers

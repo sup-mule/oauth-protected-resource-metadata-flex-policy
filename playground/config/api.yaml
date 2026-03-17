@@ -1,0 +1,27 @@
+# Copyright 2023 Salesforce, Inc. All rights reserved.
+---
+apiVersion: gateway.mulesoft.com/v1alpha1
+kind: ApiInstance
+metadata:
+  name: ingress-http
+spec:
+  address: http://0.0.0.0:8081
+  services:
+    upstream:
+      address: http://backend
+      routes:
+        - config:
+            destinationPath: /anything/echo/
+  policies:
+    - policyRef:
+        name: o-auth-protected-resource-metadata-flex-v1-0 # This value will be overriden during 'make run' execution
+        namespace: default
+      config:
+        resourceUrl: "https://api.example.com"
+        authorizationServers:
+          - "https://auth.example.com"
+          - "https://auth2.example.com"
+        scopesSupported:
+          - "read"
+          - "write"
+          - "profile"
