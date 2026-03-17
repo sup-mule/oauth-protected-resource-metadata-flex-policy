@@ -2,6 +2,20 @@
 
 This policy serves the **RFC 9728** `.well-known/oauth-protected-resource` endpoint, returning OAuth 2.0 Protected Resource Metadata as JSON. When applied to an API, the policy intercepts requests to `/.well-known/oauth-protected-resource` and returns the configured metadata without forwarding to the upstream service.
 
+## Prerequisites
+
+Before building or running this policy, ensure you have:
+
+- **Rust** v1.88.0 or later (`rustup target add wasm32-wasip1`)
+- **Cargo Generate** (`cargo install --locked cargo-generate@0.22.0`)
+- **Anypoint CLI 4.x** v1.4.4+ with PDK plugin (`anypoint-cli-v4 plugins:install anypoint-pdk-plugin`)
+- **Docker** (for local debugging with `make run`)
+- **Make** (for build commands)
+
+Authenticate to Anypoint Platform before `make setup` or `make build`—PDK crates are fetched from the Anypoint registry.
+
+*For full details, see [PDK Prerequisites](https://docs.mulesoft.com/pdk/latest/policies-pdk-prerequisites).*
+
 ## Configuration
 
 | Property | Type | Required | Description |
