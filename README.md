@@ -1,4 +1,4 @@
-# "o-auth-protected-resource-metadata" Policy
+# "oauth-protected-resource-metadata" Policy
 
 This policy serves the **RFC 9728** `.well-known/oauth-protected-resource` endpoint, returning OAuth 2.0 Protected Resource Metadata as JSON. When applied to an API, the policy intercepts requests to `/.well-known/oauth-protected-resource` and returns the configured metadata without forwarding to the upstream service.
 
